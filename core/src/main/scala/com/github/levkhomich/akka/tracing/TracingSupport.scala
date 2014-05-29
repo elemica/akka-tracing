@@ -19,9 +19,9 @@ package com.github.levkhomich.akka.tracing
 import scala.util.Random
 
 trait BaseTracingSupport extends Serializable {
-  private[tracing] def spanId: Long
-  private[tracing] def traceId: Option[Long]
-  private[tracing] def parentId: Option[Long]
+  def spanId: Long
+  def traceId: Option[Long]
+  def parentId: Option[Long]
 
   def asChildOf(ts: BaseTracingSupport)(implicit tracer: TracingExtensionImpl): this.type
 
@@ -33,9 +33,9 @@ trait BaseTracingSupport extends Serializable {
  */
 trait TracingSupport extends BaseTracingSupport {
 
-  private[tracing] var spanId = Random.nextLong()
-  private[tracing] var traceId: Option[Long] = None
-  private[tracing] var parentId: Option[Long] = None
+  var spanId = Random.nextLong()
+  var traceId: Option[Long] = None
+  var parentId: Option[Long] = None
 
   /**
    * Declares message as a child of another message.

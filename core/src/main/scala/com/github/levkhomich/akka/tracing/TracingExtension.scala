@@ -178,7 +178,7 @@ class TracingExtensionImpl(system: ActorSystem) extends Extension {
                                   valueType: thrift.AnnotationType): Unit =
     holder ! AddBinaryAnnotation(ts.spanId, key, value, valueType)
 
-  private[tracing] def createChildSpan(spanId: Long, ts: BaseTracingSupport): Unit =
+  def createChildSpan(spanId: Long, ts: BaseTracingSupport): Unit =
     holder ! CreateChildSpan(spanId, ts.spanId)
 
 }
