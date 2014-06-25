@@ -27,7 +27,7 @@ import com.typesafe.config.Config
  * enhanced by the ability to trace incoming messages.
  */
 class TracingUnboundedMailbox(settings: ActorSystem.Settings, config: Config)
-    extends MailboxType with ProducesMessageQueue[UnboundedMailbox.MessageQueue] {
+    extends MailboxType { //with ProducesMessageQueue[UnboundedMailbox.MessageQueue] {
 
   class TracingQueue(system: ActorSystem) extends ConcurrentLinkedQueue[Envelope] with QueueBasedMessageQueue
       with UnboundedMessageQueueSemantics {
