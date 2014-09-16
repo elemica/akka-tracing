@@ -34,7 +34,7 @@ class TracingExtensionImpl(system: ActorSystem) extends Extension {
   /**
    * This Actor is used when Akka Tracing is not configured
    */
-  private[tracing] class EmptyActor extends Actor {
+  class EmptyActor extends Actor {
     def receive = Actor.emptyBehavior
   }
 
