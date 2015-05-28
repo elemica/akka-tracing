@@ -69,10 +69,18 @@ trait TracingSupport extends BaseTracingSupport with Serializable {
 
   private[tracing] def init(spanId: Long, traceId: Long, parentId: Option[Long]): Unit = {
     require(!isSampled)
+    setTracingData(spanId, traceId, parentId)
+  }
+
+  def setTracingData(spanId: Long, traceId: Long, parentId: Option[Long]): Unit = {
     this.$spanId = spanId
     this.$traceId = Some(traceId)
     this.$parentId = parentId
   }
+
+  def spanId: Long = $spanId
+  def traceId: Option[Long] = $traceId
+  def parentId: Option[Long] = $parentId
 
 }
 
