@@ -22,7 +22,7 @@ object AkkaTracingBuild extends Build {
   lazy val compilationSettings =
     Seq(
       scalaVersion := "2.11.4",
-      crossScalaVersions := Seq("2.10.4", "2.11.4"),
+      crossScalaVersions := Seq("2.10.5", "2.11.4"),
       javacOptions ++= Seq(
         "-Xlint:all"
       ),
@@ -156,7 +156,7 @@ object AkkaTracingBuild extends Build {
 object Dependencies {
 
   object Compile {
-    val akkaActor    = "com.typesafe.akka" %% "akka-actor"          % "2.3.7"
+    val akkaActor    = "com.typesafe.akka" %% "akka-actor"          % "2.3.11"
     val sprayRouting = "io.spray"          %% "spray-routing"       % "1.3.2"
     val play         = "com.typesafe.play" %% "play"                % "2.3.7"
     val config       = "com.typesafe"      %  "config"              % "1.2.1"
