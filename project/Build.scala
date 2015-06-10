@@ -51,7 +51,7 @@ object AkkaTracingBuild extends Build {
     )
 
   lazy val publicationSettings = Seq(
-    publishMavenStyle := true,
+    publishMavenStyle := false,
     javacOptions ++= Seq(
       "-source", "1.6",
       "-target", "1.6"
@@ -59,32 +59,9 @@ object AkkaTracingBuild extends Build {
     scalacOptions ++= Seq(
       "-target:jvm-1.6"
     ),
-    publishTo <<= version { v =>
-      val nexus = "https://oss.sonatype.org/"
-      if (v.trim.endsWith("SNAPSHOT"))
-        Some("snapshots" at nexus + "content/repositories/snapshots")
-      else
-        Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-    },
-    publishArtifact in Test := false,
-    pomIncludeRepository := { _ => false },
-    pomExtra :=
-      <scm>
-        <url>https://github.com/levkhomich/akka-tracing.git</url>
-        <connection>scm:git:git@github.com:levkhomich/akka-tracing.git</connection>
-        <tag>HEAD</tag>
-      </scm>
-      <issueManagement>
-        <system>github</system>
-        <url>https://github.com/levkhomich/akka-tracing/issues</url>
-      </issueManagement>
-      <developers>
-        <developer>
-          <name>Lev Khomich</name>
-          <email>levkhomich@gmail.com</email>
-          <url>http://github.com/levkhomich</url>
-        </developer>
-      </developers>
+    credentials += Credentials("Authentication Required", "art.dev.elemica2.com", "ivy", "dub{gOj>aUt*Dut}koNd"),
+    publishTo := Some(Resolver.ssh("elemica2 repo", "art.dev.elemica2.com", 22)(Resolver.ivyStylePatterns) as ("ivy", Path.userHome / ".ssh" / "id_rsa") withPermissions "0755"),
+    publishArtifact in Test := false
   )
 
   lazy val root = Project(
