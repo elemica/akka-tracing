@@ -138,7 +138,7 @@ object Dependencies {
     val play         = "com.typesafe.play" %% "play"                % "2.3.7"
     val config       = "com.typesafe"      %  "config"              % "1.2.1"
     val libThrift    = "org.apache.thrift" %  "libthrift"           % "0.9.2"
-    val slf4jLog4j12 = "org.slf4j"         %  "slf4j-log4j12"       % "1.7.7"
+    val logback      = "ch.qos.logback"    % "logback-classic"      % "1.0.0"
   }
 
   object Test {
@@ -150,6 +150,6 @@ object Dependencies {
   val akka = Seq(Compile.akkaActor, Compile.config)
   val spray = Seq(Compile.sprayRouting)
   val play = Seq(Compile.play)
-  val thrift = Seq(Compile.libThrift, Compile.slf4jLog4j12)
+  val thrift = Seq(Compile.libThrift, Compile.logback)
   val test = Seq(Test.specs, Test.finagle, Test.sprayCan)
 }
